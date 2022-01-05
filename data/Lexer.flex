@@ -12,16 +12,21 @@ Identifier = [:jletter:] [:jletterdigit:]*
     public String lexeme;
 %}
 %%
- /* identifiers */
 {space} {/*Ignore*/}
 "//".* {/*Ignore*/}
-"INTEGER" {lexeme=yytext(); return Tokens.KEYWORD;}
-"class" {lexeme=yytext(); return Tokens.KEYWORD;}
+/* Keywords */
+"ENTERO" {lexeme=yytext(); return Tokens.KEYWORD;}
+ /* Identifiers */
 {Identifier} {lexeme=yytext(); return Tokens.IDENTIFIER;}
-"=" {lexeme=yytext(); return Tokens.EQUAL;}
+ /* Arithmetic operators */
 "+" {lexeme=yytext(); return Tokens.ADD;}
 "-" {lexeme=yytext(); return Tokens.MINUS;}
 "*" {lexeme=yytext(); return Tokens.PRODUCT;}
 "++" {lexeme=yytext(); return Tokens.INCREMENT;}
+ /* Symbols */
+"=" {lexeme=yytext(); return Tokens.EQUAL;}
+";" {lexeme=yytext(); return Tokens.SEMICOLON;}
+ /* Numbers */
 {D}+ {lexeme=yytext(); return Tokens.NUMBER;}
+ /* Default Error */
  . {lexeme=yytext(); return Tokens.ERROR;}

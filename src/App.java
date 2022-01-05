@@ -27,31 +27,34 @@ public class App {
 
                 switch (token) {
                     case ERROR:
-                        result += lexer.lexeme + " NO RECOGNIZED SYMBOL";
+                        result += lexer.lexeme + "\t NO RECOGNIZED SYMBOL";
                         break;
                     case ADD:
-                        result += lexer.lexeme + " ADD";
+                        result += lexer.lexeme + "\t ADD";
                         break;
                     case MINUS:
-                        result += lexer.lexeme + " MINUS";
+                        result += lexer.lexeme + "\t MINUS";
                         break;
                     case INCREMENT:
-                        result += lexer.lexeme + " INCREMENT";
+                        result += lexer.lexeme + "\t INCREMENT";
                         break;
                     case PRODUCT:
-                        result += lexer.lexeme + " PRODUCT";
+                        result += lexer.lexeme + "\t PRODUCT";
                         break;
                     case NUMBER:
-                        result += lexer.lexeme + " NUMBER";
+                        result += lexer.lexeme + "\t NUMBER";
                         break;
                     case IDENTIFIER:
-                        result += lexer.lexeme + " IDENTIFIER";
+                        result += lexer.lexeme + "\t IDENTIFIER";
                         break;
                     case EQUAL:
-                        result += lexer.lexeme + " EQUAL";
+                        result += lexer.lexeme + "\t EQUAL";
                         break;
                     case KEYWORD:
-                        result += lexer.lexeme + " KEYWORD";
+                        result += lexer.lexeme + "\t KEYWORD";
+                        break;
+                    case SEMICOLON:
+                        result += lexer.lexeme + "\t SEMICOLON";
                         break;
 
                     default:
@@ -63,18 +66,16 @@ public class App {
             }
 
         } catch (Exception e) {
-            // TODO: handle exception
-            System.out.println("ERROR " + e.toString());
+            System.out.println("ERROR\n" + e.toString());
         }
     }
 
     public static void generateFile() {
         try {
             String[] files = { (path + "Lexer.flex") };
-
             Main.generate(files);
         } catch (Exception e) {
-            System.out.println("Error en generar archivo.");
+            System.out.println("Error generating file.");
         }
     }
 }
